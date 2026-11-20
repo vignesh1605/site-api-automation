@@ -1,5 +1,6 @@
 package com.automation.api.tests;
 
+import com.automation.api.core.RequestSpecFactory;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
@@ -9,8 +10,7 @@ public class SmokeApiTest {
 
     @Test(groups = "smoke")
     public void apiShouldReturnOk() {
-        given()
-                .baseUri("https://dummyjson.com")
+        RequestSpecFactory.request()
                 .when()
                 .get("/test")
                 .then()
