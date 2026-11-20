@@ -34,4 +34,23 @@ public class ConfigManager {
         }
         return baseUrl.trim();
     }
+
+    public static String apiUsername() {
+        return requiredEnvironmentVariable("API_USERNAME");
+    }
+
+    public static String apiPassword() {
+        return requiredEnvironmentVariable("API_PASSWORD");
+    }
+
+    private static String requiredEnvironmentVariable(String name) {
+        String value = System.getenv(name);
+
+        if (value == null || value.isBlank()) {
+            throw new IllegalStateException(
+                    "Set the " + name + " environment variable before running auth tests");
+        }
+
+        return value;
+    }
 }
