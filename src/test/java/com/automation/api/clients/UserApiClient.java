@@ -34,4 +34,11 @@ public class UserApiClient {
                 .delete("/users/{id}");
     }
 
+    public Response listUsers(int limit, int skip) {
+        return RequestSpecFactory.request()
+                .queryParam("limit", limit)
+                .queryParam("skip", skip)
+                .get("/users");
+    }
+
 }

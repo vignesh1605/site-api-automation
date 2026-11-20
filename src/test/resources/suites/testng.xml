@@ -5,6 +5,7 @@
             <class name="com.automation.api.tests.SmokeApiTest"/>
             <class name="com.automation.api.tests.users.UserCrudApiTest"/>
             <class name="com.automation.api.tests.auth.LoginApiTest"/>
+            <class name="com.automation.api.tests.users.UserPaginationApiTest"/>
         </classes>
     </test>
 </suite>
