@@ -46,6 +46,9 @@
                 <version>3.5.4</version>
                 <configuration>
                     <failIfNoTests>true</failIfNoTests>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>src/test/resources/suites/testng.xml</suiteXmlFile>
+                    </suiteXmlFiles>
                 </configuration>
             </plugin>
         </plugins>

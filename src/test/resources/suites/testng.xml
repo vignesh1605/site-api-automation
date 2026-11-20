@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Site API Suite">
+    <test name="API Regression">
+        <classes>
+            <class name="com.automation.api.tests.SmokeApiTest"/>
+            <class name="com.automation.api.tests.users.UserCrudApiTest"/>
+            <class name="com.automation.api.tests.auth.LoginApiTest"/>
+        </classes>
+    </test>
+</suite>
