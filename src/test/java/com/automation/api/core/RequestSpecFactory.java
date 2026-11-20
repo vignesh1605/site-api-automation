@@ -1,6 +1,7 @@
 package com.automation.api.core;
 
 import com.automation.api.config.ConfigManager;
+import com.automation.api.logging.ApiLog;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 
@@ -13,6 +14,7 @@ public class RequestSpecFactory {
     public static RequestSpecification request() {
         return given()
                 .baseUri(ConfigManager.baseUrl())
-                .accept(ContentType.JSON);
+                .accept(ContentType.JSON)
+                .filter(ApiLog.httpFilter());
     }
 }
