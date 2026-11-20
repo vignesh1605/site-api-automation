@@ -1,0 +1,10 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "required": ["id", "firstName", "lastName"],
+  "properties": {
+    "id": { "type": "integer" },
+    "firstName": { "type": "string" },
+    "lastName": { "type": "string" }
+  }
+}
