@@ -6,7 +6,9 @@ import com.automation.api.models.request.UserRequest;
 import com.automation.api.models.response.UserResponse;
 import org.testng.annotations.Test;
 
-import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.blankOrNullString;
+import static org.hamcrest.Matchers.not;
+import static org.hamcrest.Matchers.*;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
@@ -60,5 +62,14 @@ public class UserCrudApiTest {
                 .body("isDeleted", equalTo(true));
     }
 
+    @Test
+    public void shouldReturnNotFoundForMissingUser() {
+        int missingUserId = 999_999;
+
+        users.getUser(missingUserId)
+                .then()
+                .statusCode(404)
+                .body("message", not(blankOrNullString()));
+    }
 
 }
