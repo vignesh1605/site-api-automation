@@ -1,6 +1,7 @@
 package com.automation.api.tests.users;
 
 import com.automation.api.clients.UserApiClient;
+import com.automation.api.data.UserTestData;
 import com.automation.api.models.request.UserRequest;
 import com.automation.api.models.response.UserResponse;
 import org.testng.annotations.Test;
@@ -15,17 +16,17 @@ public class UserCrudApiTest {
     private static final int EXISTING_USER_ID = 1;
     private final UserApiClient users = new UserApiClient();
 
-    @Test
-    public void shouldCreateUser(){
-        UserRequest request = new UserRequest("Maya", "Raman");
+    @Test(dataProvider = "validCreateUsers", dataProviderClass = UserTestData.class)
+    public void shouldCreateUser(UserRequest request) {
         UserResponse response = users.createUser(request)
                 .then()
                 .statusCode(201)
                 .extract()
                 .as(UserResponse.class);
+
         assertNotNull(response.id(), "The response should contain a user ID");
-        assertEquals(response.firstName(), request.firstName());
-        assertEquals(response.lastName(), request.lastName());
+        assertEquals(response.firstName(), request.firstName(), "First name mismatch");
+        assertEquals(response.lastName(), request.lastName(), "Last name mismatch");
     }
 
     @Test
